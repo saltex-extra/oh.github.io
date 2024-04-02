@@ -1,21 +1,33 @@
-function rollDice() {
-    var diceElement = document.getElementById("dice");
-    var sum = 0;
+const noteSpeed = 5; // Notes speed in pixels per frame
+let score = 0;
 
-    // 3回サイコロを振って合計を計算する
-    for (var i = 0; i < 3; i++) {
-        var randomNumber = Math.floor(Math.random() * 100) + 1; // 1から100のランダムな整数を生成
-        sum += randomNumber;
-    }
+function createNote() {
+    const note = document.createElement('div');
+    note.classList.add('note');
+    note.style.left = Math.random() * 750 + 'px'; // Random position between 0 and 750px
+    document.querySelector('.notes-container').appendChild(note);
 
-    // 平均値を計算する
-    var average = sum / 3;
+    const fallInterval = setInterval(() => {
+        const position = parseInt(note.style.top) || 0;
+        if (position >= 550) { // If note reaches the bottom
+            clearInterval(fallInterval);
+            note.remove();
+        } else {
+            note.style.top = position + noteSpeed + 'px';
+        }
+    }, 16);
 
-    // 結果を表示する
-    if (average >= 50) {
-        diceElement.innerText = "excellent (Average: " + average.toFixed(2) + ")";
-    } else {
-        diceElement.innerText = "bad (Average: " + average.toFixed(2) + ")";
-    }
+    note.addEventListener('click', () => {
+        score++;
+        updateScore();
+        note.remove();
+    });
 }
+
+function updateScore() {
+    document.querySelector('.score').innerText = 'Score: ' + score;
+}
+
+setInterval(createNote, 1000); // Generate notes every second
+
 
