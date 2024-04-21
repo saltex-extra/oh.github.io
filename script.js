@@ -7,8 +7,8 @@ function rollDice() {
   var product = roll1 * roll2 * roll3;
 
   if (product >= 901) {
-    result.textContent = 'Great';
+    result.textContent = 'Great (積: ' + product + ')';
   } else {
-    result.textContent = 'Bad';
+    result.textContent = 'Bad (積: ' + product + ')';
   }
 }
