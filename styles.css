@@ -1,34 +1,10 @@
-.game-container {
-    position: relative;
-    width: 800px;
-    height: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-    background-color: #000;
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
 }
-
-.notes-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.note {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.judgment-line {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: #fff;
+#result {
+  font-size: 24px;
+  margin-top: 20px;
 }
